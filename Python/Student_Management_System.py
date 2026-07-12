@@ -2,102 +2,107 @@
 # Parent Class
 # -----------------------------
 class Person:
-    def __init__(self, name):
+    def __init__(self, name, age):
         self.name = name
+        self.age = age
 
     def display(self):
         print("Name:", self.name)
+        print("Age:", self.age)
 
 
 # -----------------------------
 # Child Class
 # -----------------------------
 class Student(Person):
-    def __init__(self, name):
-        super().__init__(name)
-        self.borrowed_books = []
 
-    def borrow_book(self, library, book):
-        if library.issue_book(book):
-            self.borrowed_books.append(book)
-            print(f"{self.name} borrowed '{book}'")
-        else:
-            print(f"'{book}' is not available.")
+    def __init__(self, roll_no, name, age, marks):
+        super().__init__(name, age)
+        self.roll_no = roll_no
+        self.marks = marks
 
-    def return_book(self, library, book):
-        if book in self.borrowed_books:
-            self.borrowed_books.remove(book)
-            library.return_book(book)
-            print(f"{self.name} returned '{book}'")
+    def calculate_grade(self):
+
+        if self.marks >= 90:
+            return "A"
+
+        elif self.marks >= 75:
+            return "B"
+
+        elif self.marks >= 60:
+            return "C"
+
+        elif self.marks >= 40:
+            return "D"
+
         else:
-            print("You didn't borrow this book.")
+            return "Fail"
 
     # Method Overriding
     def display(self):
-        print("\nStudent:", self.name)
-        print("Borrowed Books:", self.borrowed_books)
+
+        print("\n-----------------------")
+        print("Roll No :", self.roll_no)
+        print("Name    :", self.name)
+        print("Age     :", self.age)
+        print("Marks   :", self.marks)
+        print("Grade   :", self.calculate_grade())
+        print("-----------------------")
 
 
 # -----------------------------
-# Library Class
+# Student Management System
 # -----------------------------
-class Library:
-    def __init__(self):
-        self.books = [
-            "Python",
-            "Java",
-            "C++",
-            "Machine Learning",
-            "Data Science"
-        ]
-
-    def show_books(self):
-        print("\nAvailable Books:")
-        for book in self.books:
-            print("-", book)
-
-    def issue_book(self, book):
-        if book in self.books:
-            self.books.remove(book)
-            return True
-        return False
-
-    def return_book(self, book):
-        self.books.append(book)
-
-
-# -----------------------------
-# Main Program
-# -----------------------------
-library = Library()
-student = Student("Ram")
+students = []
 
 while True:
 
-    print("\n===== Library Menu =====")
-    print("1. Show Books")
-    print("2. Borrow Book")
-    print("3. Return Book")
-    print("4. Student Details")
-    print("5. Exit")
+    print("\n===== Student Management =====")
+    print("1. Add Student")
+    print("2. Display All Students")
+    print("3. Search Student")
+    print("4. Exit")
 
     choice = input("Enter choice: ")
 
     if choice == "1":
-        library.show_books()
+
+        roll = int(input("Roll No: "))
+        name = input("Name: ")
+        age = int(input("Age: "))
+        marks = float(input("Marks: "))
+
+        student = Student(roll, name, age, marks)
+        students.append(student)
+
+        print("Student Added Successfully!")
 
     elif choice == "2":
-        book = input("Enter book name: ")
-        student.borrow_book(library, book)
+
+        if len(students) == 0:
+            print("No students found.")
+
+        else:
+            for student in students:
+                student.display()
 
     elif choice == "3":
-        book = input("Enter book name: ")
-        student.return_book(library, book)
+
+        roll = int(input("Enter Roll No: "))
+
+        found = False
+
+        for student in students:
+
+            if student.roll_no == roll:
+                student.display()
+                found = True
+                break
+
+        if not found:
+            print("Student Not Found!")
 
     elif choice == "4":
-        student.display()
-
-    elif choice == "5":
         print("Thank You!")
         break
 
