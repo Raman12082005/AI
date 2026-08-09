@@ -1,0 +1,17 @@
+[
+    {
+        "name": "Alice",
+        "roll_no": 1104,
+        "marks": 92
+    },
+    {
+        "name": "charles",
+        "roll_no": 1105,
+        "marks": 93
+    },
+    {
+        "name": "bob",
+        "roll_no": 1106,
+        "marks": 90
+    }
+]
