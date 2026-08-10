@@ -1,0 +1,8 @@
+1)  ip route: What IP addresses does this computer currently have ?
+output: 172.22.2.174 fd01::19cf:68ca:d55c:7bf2 fd01::664e:d7ff:fe6e:7d7b 
+
+-> What these mean
+172.22.2.174 → Your IPv4 address on your local network.
+This is probably the one you want when someone asks for your computer's IP address.
+jahvdgvhdbchdvb
+shswbhsbsnf
