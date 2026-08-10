@@ -1,0 +1,22 @@
+[
+    {
+        "name": "Alice",
+        "acc_no": 1104,
+        "balance": 1000
+    },
+    {
+        "name": "Bob",
+        "acc_no": 1005,
+        "balance": 2000
+    },
+    {
+        "name": "charles",
+        "acc_no": 1105,
+        "balance": 3000
+    },
+    {
+        "name": "david",
+        "acc_no": 1106,
+        "balance": 4000
+    }
+]
