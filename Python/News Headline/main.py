@@ -10,7 +10,6 @@ def news_headline(choise):
     }
     category = categories[choise]
     url = f"https://newsdata.io/api/1/latest?apikey={api_key}"
-    print(url)
     try:
         response = requests.get(url, timeout=5)
         status_code = response.status_code
